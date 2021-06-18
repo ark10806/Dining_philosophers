@@ -103,9 +103,9 @@ class DiningPhilosophersTest{
 	public static void main(String[] args){
 		int i, loop;
 		long th0, th1, th2;
-		loop = 10000;
+		loop = 1000;
 		Semaphore[] fork = new Semaphore[num];
-		
+
 		for(i=0; i<num; i++)
 			fork[i] = new Semaphore(1);
 		Semaphore room = new Semaphore(4);
@@ -114,12 +114,12 @@ class DiningPhilosophersTest{
 		for(i=0; i<num; i++)
 			phil_room[i] = new Philosopher_room(i, fork[i], fork[(i+1)%num], room, loop);
 		th0 = System.currentTimeMillis();
-		for(i=0; i<num; i++){
+		for(i=0; i<num; i++)
 			phil_room[i].start();
-			try{
+		try{
+			for(i=0; i<num; i++)
 				phil_room[i].join();
-			}catch(InterruptedException e){}
-		}
+		}catch(InterruptedException e){}
 		th0 = System.currentTimeMillis() - th0;
 
 
@@ -131,12 +131,13 @@ class DiningPhilosophersTest{
 		for(i=0; i<num; i++)
 			phil_once[i] = new Philosopher_once(i, fork[i], fork[(i+1)%num], once, loop);
 		th1 = System.currentTimeMillis();
-		for(i=0; i<num; i++){
+		for(i=0; i<num; i++)
 			phil_once[i].start();
-			try{
+		try{
+			for(i=0; i<num; i++)
 				phil_once[i].join();
-			}catch(InterruptedException e){}
-		}
+		}catch(InterruptedException e){}
+
 		th1 = System.currentTimeMillis() - th1;
 
 
@@ -147,12 +148,13 @@ class DiningPhilosophersTest{
 			phil_ac[i] = new Philosopher_acyclic(i, fork[i], fork[(i+1)%num], loop);
 
 		th2 = System.currentTimeMillis();
-		for(i=0; i<num; i++){
+		for(i=0; i<num; i++)
 			phil_ac[i].start();
-			try{
+		try{
+			for(i=0; i<num; i++)
 				phil_ac[i].join();
-			}catch(InterruptedException e){}
-		}
+		}catch(InterruptedException e){}
+
 		th2 = System.currentTimeMillis() - th2;
 
 		System.out.println("room:" + th0 + "ms");
