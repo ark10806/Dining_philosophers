@@ -155,8 +155,8 @@ class DiningPhilosophersTest{
 		}
 		th2 = System.currentTimeMillis() - th2;
 
-		System.out.println("th0:" + th1 + "ms");
-		System.out.println("th1:" + th1 + "ms");
-		System.out.println("th2:" + th2 + "ms");
+		System.out.println("room:" + th0 + "ms");
+		System.out.println("once:" + th1 + "ms");
+		System.out.println("acyc:" + th2 + "ms");
 	}
 }
